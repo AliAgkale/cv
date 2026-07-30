@@ -40,21 +40,18 @@
     }
 
     .container {
-      max-width: 920px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 0 32px;
+      padding: 0 40px;
     }
-
-    section { padding: 64px 0; }
-    section + section { border-top: 1px solid var(--border); }
 
     /* ─── HEADER ─────────────────────────────────────────── */
     header {
-      padding: 72px 0 56px;
+      padding: 64px 0 52px;
       border-bottom: 1px solid var(--border);
     }
 
-    .header-inner { display: flex; flex-direction: column; gap: 20px; }
+    .header-inner { display: flex; flex-direction: column; gap: 18px; }
 
     .eyebrow {
       font-family: var(--mono);
@@ -66,32 +63,27 @@
 
     .name {
       font-family: var(--sans);
-      font-size: clamp(32px, 5vw, 48px);
+      font-size: clamp(28px, 4vw, 44px);
       font-weight: 600;
       letter-spacing: -0.02em;
       line-height: 1.1;
     }
 
     .tagline {
-      font-size: 15px;
+      font-size: 14px;
       color: var(--text-sec);
-      max-width: 440px;
+      max-width: 480px;
       line-height: 1.6;
     }
 
-    .contacts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 8px;
-    }
+    .contacts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
 
     .contact-link {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       font-family: var(--mono);
-      font-size: 12px;
+      font-size: 11px;
       color: var(--text-sec);
       text-decoration: none;
       padding: 5px 12px;
@@ -101,33 +93,53 @@
     }
 
     .contact-link:hover { color: var(--blue); border-color: var(--blue); }
-    .contact-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .contact-link svg { width: 13px; height: 13px; flex-shrink: 0; }
 
     /* ─── SECTION LABEL ──────────────────────────────────── */
     .section-label {
       font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.12em;
+      font-size: 10px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--text-dim);
-      margin-bottom: 40px;
+      margin-bottom: 28px;
     }
 
-    /* ─── GIT GRAPH ──────────────────────────────────────── */
-    #graph-section { padding: 64px 0 0; }
+    /* ─── TWO-COLUMN MAIN LAYOUT ─────────────────────────── */
+    #main-layout {
+      display: grid;
+      grid-template-columns: 65fr 35fr;
+      gap: 0;
+      align-items: start;
+      border-bottom: 1px solid var(--border);
+    }
 
-    .graph-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    /* LEFT: graph panel — dominant column */
+    .graph-panel {
+      border-right: 1px solid var(--border);
+      padding: 48px 24px 48px 32px;
+      position: sticky;
+      top: 0;
+      max-height: 100vh;
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+
+    .graph-panel::-webkit-scrollbar { display: none; }
 
     #git-graph {
       display: block;
       width: 100%;
-      min-width: 820px;
+      max-height: 100vh;
       height: auto;
     }
 
-    /* ─── EXPERIENCE CARDS ───────────────────────────────── */
-    #experience-section { padding-top: 48px; }
+    /* RIGHT: cards panel */
+    .cards-panel {
+      padding: 48px 40px 48px 40px;
+    }
 
+    /* ─── EXPERIENCE CARDS ───────────────────────────────── */
     .exp-list { display: flex; flex-direction: column; gap: 2px; }
 
     .exp-item {
@@ -137,14 +149,14 @@
       transition: border-color 0.2s;
     }
 
-    .exp-item:hover  { border-color: var(--border-sub); }
-    .exp-item.open   { border-color: var(--border-sub); }
+    .exp-item:hover { border-color: var(--border-sub); }
+    .exp-item.open  { border-color: var(--border-sub); }
 
     .exp-header {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: 18px 20px;
+      gap: 12px;
+      padding: 16px 18px;
       cursor: pointer;
       user-select: none;
       background: transparent;
@@ -154,14 +166,13 @@
     .exp-header:hover { background: var(--surface); }
 
     .branch-dot {
-      width: 10px; height: 10px;
+      width: 9px; height: 9px;
       border-radius: 50%;
       flex-shrink: 0;
       border: 2px solid;
     }
 
     .dot-blue   { border-color: var(--blue);   background: var(--blue-dim); }
-    .dot-green  { border-color: var(--green);  background: var(--green-dim); }
     .dot-purple { border-color: var(--purple); background: #2A1F3A; }
     .dot-orange { border-color: var(--orange); background: #2A2110; }
 
@@ -169,29 +180,30 @@
       flex: 1;
       display: flex;
       align-items: baseline;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
+      min-width: 0;
     }
 
-    .exp-company { font-weight: 500; font-size: 14px; color: var(--text-pri); }
-    .exp-branch  { font-family: var(--mono); font-size: 11px; color: var(--text-dim); }
-    .exp-period  { font-family: var(--mono); font-size: 11px; color: var(--text-dim); margin-left: auto; }
+    .exp-company { font-weight: 500; font-size: 13.5px; color: var(--text-pri); }
+    .exp-branch  { font-family: var(--mono); font-size: 10px; color: var(--text-dim); }
+    .exp-period  { font-family: var(--mono); font-size: 10px; color: var(--text-dim); margin-left: auto; white-space: nowrap; }
 
-    .exp-toggle { color: var(--text-dim); font-size: 12px; transition: transform 0.2s; }
+    .exp-toggle { color: var(--text-dim); font-size: 11px; transition: transform 0.2s; flex-shrink: 0; }
     .exp-item.open .exp-toggle { transform: rotate(180deg); }
 
-    .exp-body { display: none; padding: 0 20px 24px 44px; }
+    .exp-body { display: none; padding: 0 18px 22px 39px; }
     .exp-item.open .exp-body { display: block; }
 
-    .exp-role { font-size: 12px; color: var(--text-sec); margin-bottom: 14px; }
+    .exp-role { font-size: 11.5px; color: var(--text-sec); margin-bottom: 12px; }
 
-    .exp-points { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .exp-points { list-style: none; display: flex; flex-direction: column; gap: 7px; }
 
     .exp-points li {
-      font-size: 13.5px;
+      font-size: 13px;
       color: var(--text-sec);
       line-height: 1.6;
-      padding-left: 14px;
+      padding-left: 13px;
       position: relative;
     }
 
@@ -202,15 +214,15 @@
       color: var(--text-dim);
     }
 
-    .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+    .exp-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 14px; }
 
     .tag {
       font-family: var(--mono);
-      font-size: 11px;
-      padding: 3px 8px;
+      font-size: 10px;
+      padding: 2px 7px;
       border-radius: 4px;
-      color: var(--text-sec);
       border: 1px solid var(--border-sub);
+      color: var(--text-sec);
     }
 
     .tag-blue   { color: var(--blue);   border-color: var(--blue-dim);  background: #0D1F33; }
@@ -219,16 +231,70 @@
     .tag-orange { color: var(--orange); border-color: #5A4820;          background: #1A1508; }
 
     .sub-entry {
-      margin-top: 20px;
-      padding-top: 20px;
+      margin-top: 18px;
+      padding-top: 18px;
       border-top: 1px solid var(--border);
     }
 
-    .sub-label { font-family: var(--mono); font-size: 11px; color: var(--text-dim); margin-bottom: 4px; }
-    .sub-title { font-size: 13px; font-weight: 500; color: var(--text-pri); margin-bottom: 8px; }
+    .sub-label { font-family: var(--mono); font-size: 10px; color: var(--text-dim); margin-bottom: 4px; }
+    .sub-title { font-size: 12.5px; font-weight: 500; color: var(--text-pri); margin-bottom: 7px; }
+
+    /* Personal / open-source projects get elevated visual treatment */
+    .project-entry {
+      margin-top: 22px;
+      padding: 18px 18px 18px 16px;
+      border: 1px solid var(--border-sub);
+      border-left: 3px solid var(--orange);
+      border-radius: 6px;
+      background: rgba(227, 179, 65, 0.03);
+    }
+
+    .project-entry.accent-purple { border-left-color: var(--purple); background: rgba(188, 140, 255, 0.03); }
+
+    .project-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .badge-orange { color: var(--orange); background: #2A2110; border: 1px solid #5A4820; }
+    .badge-purple { color: var(--purple); background: #241a35; border: 1px solid #4A3A6A; }
+
+    .repo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-sec);
+      text-decoration: none;
+      margin-top: 12px;
+      padding: 4px 10px;
+      border: 1px solid var(--border-sub);
+      border-radius: 5px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .repo-link:hover { color: var(--blue); border-color: var(--blue); }
+    .repo-link svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+    .nested-project {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
 
     /* ─── PULL REQUEST ───────────────────────────────────── */
-    #pr-section { padding-bottom: 80px; }
+    #pr-section {
+      padding: 48px 0 72px;
+    }
 
     .pr-card {
       border: 1px solid var(--border-sub);
@@ -238,40 +304,38 @@
 
     .pr-header {
       background: var(--surface);
-      padding: 20px 24px;
+      padding: 18px 22px;
       display: flex;
       align-items: flex-start;
-      gap: 14px;
+      gap: 12px;
       border-bottom: 1px solid var(--border);
     }
 
-    .pr-icon { width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px; color: var(--green); }
+    .pr-icon { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; color: var(--green); }
 
-    .pr-title { font-size: 15px; font-weight: 500; color: var(--text-pri); line-height: 1.4; }
-    .pr-title span { font-family: var(--mono); font-size: 14px; color: var(--blue); }
+    .pr-title { font-size: 14px; font-weight: 500; color: var(--text-pri); line-height: 1.4; }
+    .pr-title span { font-family: var(--mono); font-size: 13px; color: var(--blue); }
 
     .pr-body {
-      padding: 24px;
+      padding: 22px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      gap: 22px;
     }
-
-    @media (max-width: 600px) { .pr-body { grid-template-columns: 1fr; } }
 
     .pr-col-label {
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--text-dim);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
-    .pr-skills { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .pr-skills { list-style: none; display: flex; flex-direction: column; gap: 5px; }
 
     .pr-skills li {
-      font-size: 13px;
+      font-size: 12.5px;
       color: var(--text-sec);
       padding-left: 12px;
       position: relative;
@@ -283,55 +347,54 @@
       left: 0;
       color: var(--text-dim);
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 10px;
     }
 
-    .pr-checks { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .pr-checks { list-style: none; display: flex; flex-direction: column; gap: 6px; }
 
     .pr-checks li {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       font-family: var(--mono);
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--text-sec);
     }
 
-    .check-icon { width: 14px; height: 14px; color: var(--green); flex-shrink: 0; }
+    .check-icon { width: 13px; height: 13px; color: var(--green); flex-shrink: 0; }
 
     .pr-footer {
-      padding: 16px 24px;
+      padding: 14px 22px;
       background: var(--surface);
       border-top: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
     }
 
     .pr-status { display: flex; align-items: center; gap: 8px; }
 
     .status-dot {
-      width: 8px; height: 8px;
+      width: 7px; height: 7px;
       border-radius: 50%;
       background: var(--green);
-      box-shadow: 0 0 6px var(--green);
+      box-shadow: 0 0 5px var(--green);
     }
 
-    .status-text { font-family: var(--mono); font-size: 12px; color: var(--green); }
-    .pr-hash     { font-family: var(--mono); font-size: 11px; color: var(--text-dim); }
+    .status-text { font-family: var(--mono); font-size: 11px; color: var(--green); }
+    .pr-hash     { font-family: var(--mono); font-size: 10px; color: var(--text-dim); }
 
-    /* Review buttons */
-    .pr-actions { display: flex; gap: 8px; }
+    .pr-actions { display: flex; gap: 7px; }
 
     .btn-review {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       font-family: var(--mono);
-      font-size: 12px;
-      padding: 6px 14px;
+      font-size: 11px;
+      padding: 5px 12px;
       border-radius: 6px;
       border: 1px solid;
       cursor: pointer;
@@ -339,25 +402,36 @@
       transition: background 0.15s, color 0.15s;
     }
 
-    .btn-approve {
-      color: var(--green);
-      border-color: #2A5A30;
-    }
-
+    .btn-approve { color: var(--green); border-color: #2A5A30; }
     .btn-approve:hover { background: #0D1F11; }
     .btn-approve.active { background: var(--green); color: #0D1117; border-color: var(--green); }
 
-    .btn-decline {
-      color: #F85149;
-      border-color: #5A1F1F;
-    }
-
+    .btn-decline { color: #F85149; border-color: #5A1F1F; }
     .btn-decline:hover { background: #1F0D0D; }
     .btn-decline.active { background: #F85149; color: #0D1117; border-color: #F85149; }
 
     /* ─── FOOTER ─────────────────────────────────────────── */
-    footer { border-top: 1px solid var(--border); padding: 24px 0; text-align: center; }
-    .footer-text { font-family: var(--mono); font-size: 11px; color: var(--text-dim); }
+    footer { border-top: 1px solid var(--border); padding: 22px 0; text-align: center; }
+    .footer-text { font-family: var(--mono); font-size: 10px; color: var(--text-dim); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 768px) {
+      #main-layout {
+        grid-template-columns: 1fr;
+      }
+      .graph-panel {
+        position: static;
+        max-height: none;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 40px 24px;
+        overflow-x: auto;
+      }
+      #git-graph { min-width: 560px; }
+      .cards-panel { padding: 40px 24px; }
+      .container { padding: 0 24px; }
+      .pr-body { grid-template-columns: 1fr; }
+    }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition: none !important; }
@@ -366,219 +440,172 @@
 </head>
 <body>
 
-<!-- HEADER -->
+<!-- ══ HEADER ══ -->
 <header>
   <div class="container">
     <div class="header-inner">
       <span class="eyebrow">feature/software-engineer · HEAD</span>
-      <h1 class="name">Software Engineer</h1>
+      <h1 class="name">Ali Agkale</h1>
+      <p class="tagline" style="margin-top:-8px; color:var(--text-pri); font-weight:500; font-size:15px;">Software Engineer</p>
       <p class="tagline">Building backend systems, developer tools and AI infrastructure.</p>
       <nav class="contacts" aria-label="Contact links">
-        <a href="https://github.com" class="contact-link" target="_blank" rel="noopener">
+        <a href="https://github.com/AliAgkale" class="contact-link" target="_blank" rel="noopener">
           <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
           GitHub
         </a>
-        <a href="https://linkedin.com" class="contact-link" target="_blank" rel="noopener">
+        <a href="https://it.linkedin.com/in/ali-agkale-7b16121b4" class="contact-link" target="_blank" rel="noopener">
           <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg>
           LinkedIn
-        </a>
-        <a href="#" class="contact-link" download>
-          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/></svg>
-          Download PDF
         </a>
       </nav>
     </div>
   </div>
 </header>
 
-<!-- GIT GRAPH -->
-<section id="graph-section">
-  <div class="container">
+<!-- ══ TWO-COLUMN: GRAPH LEFT + CARDS RIGHT ══ -->
+<div id="main-layout">
+
+  <!-- LEFT: Git Graph sticky -->
+  <aside class="graph-panel" aria-label="Career git graph">
     <p class="section-label">Career Graph</p>
-    <div class="graph-wrapper">
-      <!--
-        Layout:
-          main x = 100
-          branch-1 x = 280  (inspiring, avanade, intesa)
-          sub-branch x = 480 (wse, azure, toolkit)
-          sub-branch-2 x = 660 (promptlint)
+    <!--
+      Compact vertical graph for the sidebar.
+      main x=52  branch x=160  sub x=240
+      Kept narrow to fit ~300px column.
+    -->
+    <svg id="git-graph"
+         viewBox="0 0 440 730"
+         preserveAspectRatio="xMinYMin meet"
+         xmlns="http://www.w3.org/2000/svg"
+         role="img"
+         aria-label="Git flow diagram of career history">
+      <defs>
+        <style>
+          .gl  { font-family:'JetBrains Mono',monospace; font-size:9px;  fill:#8B949E; }
+          .glb { font-family:'JetBrains Mono',monospace; font-size:9px;  fill:#58A6FF; }
+          .glg { font-family:'JetBrains Mono',monospace; font-size:8.5px; fill:#3FB950; }
+          .glp { font-family:'JetBrains Mono',monospace; font-size:9px;  fill:#BC8CFF; }
+          .glo { font-family:'JetBrains Mono',monospace; font-size:9px;  fill:#E3B341; }
+          .gc  { font-family:'Inter',sans-serif; font-size:11.5px; font-weight:500; fill:#F0F6FC; }
+          .gs  { font-family:'Inter',sans-serif; font-size:10px; fill:#8B949E; }
+          .gd  { font-family:'JetBrains Mono',monospace; font-size:8.5px; fill:#484F58; }
+        </style>
+        <marker id="arrow-blue" viewBox="0 0 8 8" refX="4" refY="4"
+                markerWidth="5" markerHeight="5" orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#58A6FF"/>
+        </marker>
+      </defs>
 
-        Y positions:
-          50   = initial commit
-          120  = inspiring branch-out
-          220  = wse branch-out
-          270  = wse merge back
-          320  = inspiring merge
-          390  = avanade branch-out
-          460  = azure branch-out
-          510  = azure merge
-          555  = avanade merge
-          620  = intesa branch-out
-          690  = toolkit branch-out
-          760  = toolkit merge
-          800  = promptlint branch-out
-          860  = promptlint merge
-          910  = HEAD
-      -->
-      <svg id="git-graph"
-           viewBox="0 0 820 950"
-           preserveAspectRatio="xMidYMid meet"
-           xmlns="http://www.w3.org/2000/svg"
-           role="img"
-           aria-label="Git flow diagram of career history">
-        <defs>
-          <style>
-            .gl  { font-family:'JetBrains Mono',monospace; font-size:10px; fill:#8B949E; }
-            .glb { font-family:'JetBrains Mono',monospace; font-size:10px; fill:#58A6FF; }
-            .glg { font-family:'JetBrains Mono',monospace; font-size:10px; fill:#3FB950; }
-            .glp { font-family:'JetBrains Mono',monospace; font-size:10px; fill:#BC8CFF; }
-            .glo { font-family:'JetBrains Mono',monospace; font-size:10px; fill:#E3B341; }
-            .gc  { font-family:'Inter',sans-serif; font-size:13px; font-weight:500; fill:#F0F6FC; }
-            .gs  { font-family:'Inter',sans-serif; font-size:11.5px; fill:#8B949E; }
-            .gd  { font-family:'JetBrains Mono',monospace; font-size:10px; fill:#484F58; }
-          </style>
-          <marker id="arrow-blue" viewBox="0 0 8 8" refX="4" refY="4"
-                  markerWidth="5" markerHeight="5" orient="auto">
-            <path d="M0,0 L8,4 L0,8 Z" fill="#58A6FF"/>
-          </marker>
-        </defs>
+      <!-- MAIN TRUNK x=62 -->
+      <line x1="62" y1="26" x2="62" y2="800" stroke="#30363D" stroke-width="2"/>
 
-        <!-- ══ MAIN TRUNK (x=100) ══ -->
-        <line x1="100" y1="30" x2="100" y2="920" stroke="#30363D" stroke-width="2"/>
+      <!-- INITIAL COMMIT -->
+      <circle cx="62" cy="42" r="5" fill="#58A6FF"/>
+      <text x="78" y="38"  class="glb">initial commit</text>
+      <text x="78" y="52"  class="gc">ITIS Enrico Mattei</text>
 
-        <!-- ══ INITIAL COMMIT ══ -->
-        <circle cx="100" cy="50" r="5" fill="#58A6FF"/>
-        <text x="118" y="45" class="glb">initial commit</text>
-        <text x="118" y="60" class="gc">ITIS Enrico Mattei</text>
+      <!-- ── INSPIRING  branch x=190  y:92→272 ── -->
+      <path d="M62,80 C62,102 190,74 190,94" fill="none" stroke="#58A6FF" stroke-width="1.7"/>
+      <line x1="190" y1="94" x2="190" y2="256" stroke="#58A6FF" stroke-width="1.7"/>
+      <path d="M190,256 C190,272 62,256 62,272" fill="none" stroke="#3FB950" stroke-width="1.7"/>
 
-        <!-- ══════════════════════════════════════════
-             INSPIRING SOFTWARE  branch x=280
-             branch-out y=120  merge y=320
-        ══════════════════════════════════════════ -->
-        <!-- branch curve out -->
-        <path d="M100,105 C100,132 280,95 280,120" fill="none" stroke="#58A6FF" stroke-width="1.5"/>
-        <!-- branch vertical -->
-        <line x1="280" y1="120" x2="280" y2="302" stroke="#58A6FF" stroke-width="1.5"/>
-        <!-- merge curve in -->
-        <path d="M280,302 C280,320 100,302 100,320" fill="none" stroke="#3FB950" stroke-width="1.5"/>
+      <circle cx="190" cy="94" r="4.5" fill="#58A6FF"/>
+      <text x="206" y="90"  class="glb">feature/inspiring-software</text>
+      <text x="206" y="104" class="gc">Inspiring Software</text>
+      <text x="206" y="117" class="gs">Software Engineer</text>
+      <text x="206" y="129" class="gd">Feb 2021 – Jun 2022</text>
 
-        <!-- node -->
-        <circle cx="280" cy="120" r="5" fill="#58A6FF"/>
-        <text x="298" y="115" class="glb">feature/inspiring-software</text>
-        <text x="298" y="130" class="gc">Inspiring Software</text>
-        <text x="298" y="145" class="gs">Software Engineer</text>
-        <text x="298" y="159" class="gd">Feb 2021 – Jun 2022</text>
+      <!-- WSE sub  x=340  y:170→218 -->
+      <path d="M190,160 C190,172 340,155 340,170" fill="none" stroke="#E3B341" stroke-width="1.3"/>
+      <line x1="340" y1="170" x2="340" y2="202" stroke="#E3B341" stroke-width="1.3"/>
+      <path d="M340,202 C340,216 190,202 190,218" fill="none" stroke="#3FB950" stroke-width="1.3"/>
 
-        <!-- ── WSE sub-branch x=480 ─────────────────
-             branch-out y=220  merge y=270           -->
-        <path d="M280,206 C280,218 480,196 480,220" fill="none" stroke="#E3B341" stroke-width="1.5"/>
-        <line x1="480" y1="220" x2="480" y2="252" stroke="#E3B341" stroke-width="1.5"/>
-        <path d="M480,252 C480,268 280,255 280,270" fill="none" stroke="#3FB950" stroke-width="1.5"/>
+      <circle cx="340" cy="170" r="3.5" fill="#E3B341"/>
+      <text x="354" y="166" class="glo">feature/wall-street-english</text>
+      <text x="354" y="179" class="gs">Wall Street English</text>
+      <text x="354" y="190" class="gd">English Course</text>
 
-        <circle cx="480" cy="220" r="4" fill="#E3B341"/>
-        <text x="496" y="215" class="glo">feature/wall-street-english</text>
-        <text x="496" y="229" class="gc" style="font-size:12px">Wall Street English</text>
-        <text x="496" y="242" class="gs">English Course — completed during this period</text>
+      <circle cx="190" cy="218" r="3.5" fill="#3FB950"/>
+      <text x="206" y="222" class="glg">merge · Jun 2022</text>
 
-        <!-- merge dot on inspiring branch -->
-        <circle cx="280" cy="270" r="4" fill="#3FB950"/>
-        <text x="298" y="274" class="glg">merge · Jun 2022</text>
+      <circle cx="62" cy="272" r="4.5" fill="#3FB950"/>
+      <text x="46" y="268" class="glg" text-anchor="end">merge</text>
+      <text x="46" y="279" class="gd"  text-anchor="end">Jun 2022</text>
 
-        <!-- merge dot on main -->
-        <circle cx="100" cy="320" r="5" fill="#3FB950"/>
-        <text x="56" y="316" class="glg" text-anchor="end">merge</text>
-        <text x="56" y="328" class="gd" text-anchor="end">Jun 2022</text>
+      <!-- ── AVANADE  branch x=190  y:322→464 ── -->
+      <path d="M62,310 C62,330 190,302 190,322" fill="none" stroke="#58A6FF" stroke-width="1.7"/>
+      <line x1="190" y1="322" x2="190" y2="448" stroke="#58A6FF" stroke-width="1.7"/>
+      <path d="M190,448 C190,464 62,448 62,464" fill="none" stroke="#3FB950" stroke-width="1.7"/>
 
-        <!-- ══════════════════════════════════════════
-             AVANADE  branch x=280
-             branch-out y=390  merge y=555
-        ══════════════════════════════════════════ -->
-        <path d="M100,375 C100,402 280,362 280,390" fill="none" stroke="#58A6FF" stroke-width="1.5"/>
-        <line x1="280" y1="390" x2="280" y2="537" stroke="#58A6FF" stroke-width="1.5"/>
-        <path d="M280,537 C280,555 100,537 100,555" fill="none" stroke="#3FB950" stroke-width="1.5"/>
+      <circle cx="190" cy="322" r="4.5" fill="#58A6FF"/>
+      <text x="206" y="318" class="glb">feature/avanade</text>
+      <text x="206" y="331" class="gc">Avanade</text>
+      <text x="206" y="344" class="gs">Software Engineer</text>
+      <text x="206" y="356" class="gd">Jul 2022 – Jun 2023</text>
 
-        <circle cx="280" cy="390" r="5" fill="#58A6FF"/>
-        <text x="298" y="385" class="glb">feature/avanade</text>
-        <text x="298" y="399" class="gc">Avanade</text>
-        <text x="298" y="414" class="gs">Software Engineer</text>
-        <text x="298" y="428" class="gd">Jul 2022 – Jun 2023</text>
+      <!-- Azure sub  x=340  y:382→422 -->
+      <path d="M190,372 C190,382 340,368 340,382" fill="none" stroke="#BC8CFF" stroke-width="1.3"/>
+      <line x1="340" y1="382" x2="340" y2="410" stroke="#BC8CFF" stroke-width="1.3"/>
+      <path d="M340,410 C340,422 190,410 190,422" fill="none" stroke="#3FB950" stroke-width="1.3"/>
 
-        <!-- ── Azure sub-branch x=480 ────────────────
-             branch-out y=460  merge y=510           -->
-        <path d="M280,446 C280,460 480,432 480,460" fill="none" stroke="#BC8CFF" stroke-width="1.5"/>
-        <line x1="480" y1="460" x2="480" y2="492" stroke="#BC8CFF" stroke-width="1.5"/>
-        <path d="M480,492 C480,510 280,495 280,510" fill="none" stroke="#3FB950" stroke-width="1.5"/>
+      <circle cx="340" cy="382" r="3.5" fill="#BC8CFF"/>
+      <text x="354" y="378" class="glp">feature/azure-fundamentals</text>
+      <text x="354" y="391" class="gs">Azure Fundamentals — AZ-900</text>
+      <text x="354" y="402" class="gd">Microsoft Certified</text>
 
-        <circle cx="480" cy="460" r="4" fill="#BC8CFF"/>
-        <text x="496" y="455" class="glp">feature/azure-fundamentals</text>
-        <text x="496" y="469" class="gc" style="font-size:12px">Azure Fundamentals — AZ-900</text>
-        <text x="496" y="482" class="gs">Microsoft Certified</text>
+      <circle cx="190" cy="422" r="3.5" fill="#3FB950"/>
+      <text x="206" y="426" class="glg">merge · Jun 2023</text>
 
-        <!-- merge dot on avanade -->
-        <circle cx="280" cy="510" r="4" fill="#3FB950"/>
-        <text x="298" y="514" class="glg">merge · Jun 2023</text>
+      <circle cx="62" cy="464" r="4.5" fill="#3FB950"/>
+      <text x="46" y="460" class="glg" text-anchor="end">merge</text>
+      <text x="46" y="471" class="gd"  text-anchor="end">Jun 2023</text>
 
-        <!-- merge dot on main -->
-        <circle cx="100" cy="555" r="5" fill="#3FB950"/>
-        <text x="56" y="551" class="glg" text-anchor="end">merge</text>
-        <text x="56" y="563" class="gd" text-anchor="end">Jun 2023</text>
+      <!-- ── INTESA  branch x=190  y:512→open ── -->
+      <path d="M62,502 C62,522 190,494 190,512" fill="none" stroke="#58A6FF" stroke-width="1.7"/>
+      <line x1="190" y1="512" x2="190" y2="800" stroke="#58A6FF" stroke-width="1.7" stroke-dasharray="6 3"/>
 
-        <!-- ══════════════════════════════════════════
-             INTESA SANPAOLO  branch x=280
-             branch-out y=620  open / present
-        ══════════════════════════════════════════ -->
-        <path d="M100,606 C100,632 280,594 280,620" fill="none" stroke="#58A6FF" stroke-width="1.5"/>
-        <!-- dashed = still open -->
-        <line x1="280" y1="620" x2="280" y2="920" stroke="#58A6FF" stroke-width="1.5" stroke-dasharray="5 3"/>
+      <circle cx="190" cy="512" r="4.5" fill="#58A6FF"/>
+      <text x="206" y="508" class="glb">feature/intesa-sanpaolo</text>
+      <text x="206" y="521" class="gc">Intesa Sanpaolo</text>
+      <text x="206" y="534" class="gs">Software Engineer</text>
+      <text x="206" y="546" class="gd">Jun 2023 – Present</text>
 
-        <circle cx="280" cy="620" r="5" fill="#58A6FF"/>
-        <text x="298" y="615" class="glb">feature/intesa-sanpaolo</text>
-        <text x="298" y="629" class="gc">Intesa Sanpaolo</text>
-        <text x="298" y="644" class="gs">Software Engineer</text>
-        <text x="298" y="658" class="gd">Jun 2023 – Present</text>
+      <!-- Toolkit sub  x=340  y:592→648 — highlighted personal project -->
+      <path d="M190,582 C190,594 340,576 340,592" fill="none" stroke="#E3B341" stroke-width="1.5"/>
+      <line x1="340" y1="592" x2="340" y2="628" stroke="#E3B341" stroke-width="1.5" stroke-dasharray="4 2"/>
+      <path d="M340,628 C340,644 190,630 190,646" fill="none" stroke="#3FB950" stroke-width="1.5"/>
 
-        <!-- ── Toolkit sub-branch x=480 ──────────────
-             branch-out y=700  merge y=760           -->
-        <path d="M280,686 C280,700 480,672 480,700" fill="none" stroke="#E3B341" stroke-width="1.5"/>
-        <line x1="480" y1="700" x2="480" y2="742" stroke="#E3B341" stroke-width="1.5" stroke-dasharray="4 2"/>
-        <path d="M480,742 C480,760 280,745 280,760" fill="none" stroke="#3FB950" stroke-width="1.5"/>
+      <circle cx="340" cy="592" r="4" fill="#E3B341"/>
+      <text x="354" y="588" class="glo">★ feature/engineering-productivity-toolkit</text>
+      <text x="354" y="601" class="gs">Personal Project · adopted at Intesa Sanpaolo</text>
 
-        <circle cx="480" cy="700" r="4" fill="#E3B341"/>
-        <text x="496" y="695" class="glo">feature/engineering-productivity-toolkit</text>
-        <text x="496" y="709" class="gc" style="font-size:12px">Engineering Productivity Toolkit</text>
-        <text x="496" y="722" class="gs">Personal Project · adopted within Intesa Sanpaolo</text>
+      <circle cx="190" cy="646" r="3.5" fill="#3FB950"/>
+      <text x="206" y="650" class="glg">merge</text>
 
-        <!-- merge dot on intesa -->
-        <circle cx="280" cy="760" r="4" fill="#3FB950"/>
-        <text x="298" y="764" class="glg">merge</text>
+      <!-- PromptLint sub  x=340  y:686→738 — highlighted open source, merged v1.0.0 -->
+      <path d="M190,676 C190,688 340,670 340,686" fill="none" stroke="#BC8CFF" stroke-width="1.5"/>
+      <line x1="340" y1="686" x2="340" y2="722" stroke="#BC8CFF" stroke-width="1.5" stroke-dasharray="4 2"/>
+      <path d="M340,722 C340,736 190,724 190,738" fill="none" stroke="#3FB950" stroke-width="1.5"/>
 
-        <!-- ── PromptLint sub-branch x=480 ───────────
-             branch-out y=800  open (in progress)   -->
-        <path d="M280,786 C280,800 480,775 480,800" fill="none" stroke="#BC8CFF" stroke-width="1.5"/>
-        <line x1="480" y1="800" x2="480" y2="870" stroke="#BC8CFF" stroke-width="1.5" stroke-dasharray="4 2"/>
-        <!-- still open, no merge yet -->
+      <circle cx="340" cy="686" r="4" fill="#BC8CFF"/>
+      <text x="354" y="682" class="glp">◆ feature/promptlint</text>
+      <text x="354" y="695" class="gs">Open Source · Static Analysis for AI Prompts</text>
 
-        <circle cx="480" cy="800" r="4" fill="#BC8CFF"/>
-        <text x="496" y="795" class="glp">feature/promptlint</text>
-        <text x="496" y="809" class="gc" style="font-size:12px">PromptLint</text>
-        <text x="496" y="822" class="gs">Open Source · Static Analysis Engine for AI Prompts</text>
-        <text x="496" y="836" class="gd">In progress</text>
+      <circle cx="190" cy="738" r="3.5" fill="#3FB950"/>
+      <text x="206" y="742" class="glg">merge · v1.0.0</text>
 
-        <!-- ── HEAD ── -->
-        <line x1="100" y1="915" x2="100" y2="935"
-              stroke="#58A6FF" stroke-width="2"
-              marker-end="url(#arrow-blue)"/>
-        <text x="76" y="912" class="glb" text-anchor="end">HEAD</text>
-        <text x="118" y="927" class="glb">Open Pull Request ↗</text>
+      <!-- HEAD -->
+      <line x1="62" y1="792" x2="62" y2="812"
+            stroke="#58A6FF" stroke-width="2"
+            marker-end="url(#arrow-blue)"/>
+      <text x="44" y="790" class="glb" text-anchor="end">HEAD</text>
+      <text x="78" y="816" class="glb">Open PR ↗</text>
 
-      </svg>
-    </div>
-  </div>
-</section>
+    </svg>
+  </aside>
 
-<!-- EXPERIENCE CARDS -->
-<section id="experience-section">
-  <div class="container">
+  <!-- RIGHT: Experience cards -->
+  <div class="cards-panel">
     <p class="section-label">Experience &amp; Projects</p>
     <div class="exp-list">
 
@@ -605,7 +632,6 @@
             <span class="tag tag-blue">Spring Boot</span>
             <span class="tag tag-blue">Unit Testing</span>
           </div>
-
           <div class="sub-entry">
             <p class="sub-label">↳ branch / feature/wall-street-english · merged Jun 2022</p>
             <p class="sub-title">Wall Street English</p>
@@ -640,7 +666,6 @@
             <span class="tag tag-blue">Docker</span>
             <span class="tag tag-blue">SQL</span>
           </div>
-
           <div class="sub-entry">
             <p class="sub-label">↳ branch / feature/azure-fundamentals · merged Jun 2023</p>
             <p class="sub-title">Microsoft Azure Fundamentals — AZ-900</p>
@@ -654,7 +679,7 @@
         </div>
       </article>
 
-      <!-- INTESA SANPAOLO — expanded by default, richest card -->
+      <!-- INTESA SANPAOLO — open by default -->
       <article class="exp-item open" id="exp-intesa">
         <div class="exp-header" role="button" tabindex="0" aria-expanded="true" aria-controls="body-intesa">
           <span class="branch-dot dot-blue" aria-hidden="true"></span>
@@ -680,17 +705,18 @@
             <span class="tag tag-blue">REST APIs</span>
           </div>
 
-          <!-- TOOLKIT as sub-branch of Intesa -->
-          <div class="sub-entry">
+          <!-- TOOLKIT — elevated personal project treatment -->
+          <div class="project-entry">
+            <span class="project-badge badge-orange">★ Personal Project</span>
             <p class="sub-label">↳ branch / feature/engineering-productivity-toolkit · merged</p>
-            <p class="sub-title">Engineering Productivity Toolkit</p>
-            <p class="exp-role">Personal Project — conceived and developed outside regular working hours, adopted within Intesa Sanpaolo</p>
+            <p class="sub-title" style="font-size:14px; margin-bottom:10px;">Engineering Productivity Toolkit</p>
+            <p class="exp-role">Conceived and built independently, outside working hours — later adopted within Intesa Sanpaolo</p>
             <ul class="exp-points">
               <li>Identified a recurring bottleneck at Intesa Sanpaolo: release documentation was consuming 4–8 hours per cycle, written manually from Git history.</li>
               <li>Independently designed and built an AI-assisted toolkit to solve it — entirely outside working hours, as a personal initiative.</li>
               <li>Started as a standalone CLI and evolved into reusable scripts and custom AI skills.</li>
-              <li>Automatically analyzes Git changes, generates structured technical documentation and publishes reports to Confluence.</li>
-              <li>Reduced release documentation time to under 5 minutes. Adopted by multiple colleagues at Intesa Sanpaolo to document releases, analyze historical changes and prepare technical documentation before new development cycles.</li>
+              <li>Automatically analyzes Git changes via <code style="font-family:var(--mono);font-size:11px;color:var(--orange)">git diff</code> between branches or tags, runs a structured AI review of the delta, generates technical documentation and publishes it to Confluence.</li>
+              <li>Reduced release documentation time to under 5 minutes. Adopted by multiple colleagues to document releases, analyze historical changes and prepare technical documentation before new development cycles.</li>
             </ul>
             <div class="exp-tags">
               <span class="tag tag-orange">CLI</span>
@@ -700,14 +726,12 @@
               <span class="tag tag-orange">Automation</span>
             </div>
           </div>
-
-          <!-- PROMPTLINT as open sub-branch -->
-          <div class="sub-entry">
-            <p class="sub-label">↳ branch / feature/promptlint · open</p>
-            <p class="sub-title">PromptLint — Static Analysis Engine for AI Prompts</p>
-            <p class="exp-role">Open Source Project — in progress</p>
+            <span class="project-badge badge-purple">◆ Open Source</span>
+            <p class="sub-label">↳ branch / feature/promptlint · merged · v1.0.0</p>
+            <p class="sub-title" style="font-size:14px; margin-bottom:10px;">PromptLint — Static Analysis Engine for AI Prompts</p>
+            <p class="exp-role">Provider-agnostic static analysis engine, inspired by ESLint</p>
             <ul class="exp-points">
-              <li>Built an open-source, provider-agnostic static analysis engine inspired by ESLint.</li>
+              <li>Built an open-source, provider-agnostic static analysis engine for AI prompts, inspired by ESLint.</li>
               <li>Designed a modular rule engine to detect prompt quality issues without relying on external AI services.</li>
               <li>Supports multilingual spell checking, language detection and extensible analysis rules.</li>
             </ul>
@@ -715,11 +739,16 @@
               <span class="tag tag-purple">TypeScript</span>
               <span class="tag tag-purple">Open Source</span>
               <span class="tag tag-purple">Static Analysis</span>
+              <span class="tag tag-purple">v1.0.0</span>
             </div>
+            <a href="https://github.com/AliAgkale/PromptLint" class="repo-link" target="_blank" rel="noopener">
+              <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              github.com/AliAgkale/PromptLint
+            </a>
 
-            <div class="sub-entry" style="margin-top:14px; padding-top:14px;">
+            <div class="nested-project">
               <p class="sub-label">sub-project / Chrome Extension</p>
-              <p class="sub-title" style="font-size:12px">PromptLint Chrome Extension</p>
+              <p class="sub-title" style="font-size:12.5px">PromptLint Chrome Extension</p>
               <ul class="exp-points">
                 <li>Brings PromptLint Core directly into AI chat interfaces with real-time offline analysis.</li>
                 <li>Published on the Chrome Web Store.</li>
@@ -728,18 +757,10 @@
                 <span class="tag tag-purple">Chrome Extension</span>
                 <span class="tag tag-purple">Web Store</span>
               </div>
-            </div>
-
-            <div class="sub-entry" style="margin-top:14px; padding-top:14px;">
-              <p class="sub-label">sub-project / CLI</p>
-              <p class="sub-title" style="font-size:12px">PromptLint CLI</p>
-              <ul class="exp-points">
-                <li>Provider-agnostic CLI built on PromptLint Core. Planned npm package.</li>
-              </ul>
-              <div class="exp-tags">
-                <span class="tag tag-purple">CLI</span>
-                <span class="tag tag-purple">npm · planned</span>
-              </div>
+              <a href="https://github.com/AliAgkale/PromptLintChrome" class="repo-link" target="_blank" rel="noopener">
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+                github.com/AliAgkale/PromptLintChrome
+              </a>
             </div>
           </div>
 
@@ -748,14 +769,13 @@
 
     </div>
   </div>
-</section>
+</div>
 
-<!-- PULL REQUEST -->
+<!-- ══ PULL REQUEST ══ -->
 <section id="pr-section">
   <div class="container">
     <p class="section-label">Open Pull Request</p>
     <div class="pr-card">
-
       <div class="pr-header">
         <svg class="pr-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
           <path d="M7.177 3.073L9.573.677A.25.25 0 0 1 10 .854v4.792a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354zM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zm-2.25.75a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25zM11 2.5h-1V4h1a1 1 0 0 1 1 1v5.628a2.251 2.251 0 1 0 1.5 0V5A2.5 2.5 0 0 0 11 2.5zm1 10.25a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0zM3.75 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5z"/>
@@ -771,11 +791,10 @@
         <div>
           <p class="pr-col-label">Description</p>
           <ul class="pr-skills">
-            <li>Enterprise Software Engineering</li>
-            <li>Developer Productivity</li>
-            <li>Backend Systems</li>
-            <li>Open Source</li>
-            <li>AI Tooling</li>
+            <li>5+ years building backend systems across industrial, healthcare and financial domains</li>
+            <li>Currently developing microservices for a real-time trading platform</li>
+            <li>Built and shipped a personal AI tool now adopted by colleagues, cutting doc time from hours to minutes</li>
+            <li>Author of an open-source static analysis engine for AI prompts, live as v1.0.0</li>
           </ul>
         </div>
         <div>
@@ -800,22 +819,21 @@
         </div>
         <div class="pr-actions">
           <button class="btn-review btn-approve" id="btn-approve" aria-label="Approve pull request">
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0z"/></svg>
             Approve
           </button>
           <button class="btn-review btn-decline" id="btn-decline" aria-label="Request changes">
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06z"/></svg>
             Request Changes
           </button>
         </div>
         <span class="pr-hash">feature/software-engineer → google/main</span>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ══ FOOTER ══ -->
 <footer>
   <div class="container">
     <p class="footer-text">Software Engineer · feature/software-engineer · HEAD</p>
@@ -844,37 +862,21 @@
   const statusText = document.querySelector('.status-text');
 
   btnApprove.addEventListener('click', () => {
-    const alreadyActive = btnApprove.classList.contains('active');
-    btnApprove.classList.toggle('active', !alreadyActive);
+    const active = btnApprove.classList.toggle('active');
     btnDecline.classList.remove('active');
-    if (!alreadyActive) {
-      statusDot.style.background  = '#3FB950';
-      statusDot.style.boxShadow   = '0 0 6px #3FB950';
-      statusText.style.color      = '#3FB950';
-      statusText.textContent      = 'Approved — ready to merge';
-    } else {
-      statusDot.style.background  = '#3FB950';
-      statusDot.style.boxShadow   = '0 0 6px #3FB950';
-      statusText.style.color      = '#3FB950';
-      statusText.textContent      = 'Ready for review';
-    }
+    statusDot.style.background = active ? '#3FB950' : '#3FB950';
+    statusDot.style.boxShadow  = active ? '0 0 5px #3FB950' : '0 0 5px #3FB950';
+    statusText.style.color     = active ? '#3FB950' : '#3FB950';
+    statusText.textContent     = active ? 'Approved — ready to merge' : 'Ready for review';
   });
 
   btnDecline.addEventListener('click', () => {
-    const alreadyActive = btnDecline.classList.contains('active');
-    btnDecline.classList.toggle('active', !alreadyActive);
+    const active = btnDecline.classList.toggle('active');
     btnApprove.classList.remove('active');
-    if (!alreadyActive) {
-      statusDot.style.background  = '#F85149';
-      statusDot.style.boxShadow   = '0 0 6px #F85149';
-      statusText.style.color      = '#F85149';
-      statusText.textContent      = 'Changes requested';
-    } else {
-      statusDot.style.background  = '#3FB950';
-      statusDot.style.boxShadow   = '0 0 6px #3FB950';
-      statusText.style.color      = '#3FB950';
-      statusText.textContent      = 'Ready for review';
-    }
+    statusDot.style.background = active ? '#F85149' : '#3FB950';
+    statusDot.style.boxShadow  = active ? '0 0 5px #F85149' : '0 0 5px #3FB950';
+    statusText.style.color     = active ? '#F85149' : '#3FB950';
+    statusText.textContent     = active ? 'Changes requested' : 'Ready for review';
   });
 </script>
 
